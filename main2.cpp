@@ -9,9 +9,9 @@ double pi = 3.14159265358979323846;
 
 double a = 0;
 double b = 2*pi;
-int n = 200;
-int t = 7;
-double soma[7];
+int n = 0;
+int t = 0;
+double soma[0];
 
 double f(double x){
     return 5;
@@ -52,11 +52,15 @@ void* computar(void *tid){
 
 int main(int argc, char *argv[]){
 
-    pthread_t threads[7];
+    
     int i;
     void *thread_return;
     double somatorio = 0;
-
+    cout<<"Digite a quantidade de threads usadas : "<<endl;
+    cin>>t;
+    cout<<"Digite a quantidade de trapézios usadas : "<<endl;
+    cin>>n;
+    pthread_t threads[t];
     for(i=0; i<t; i++){
         cout<<"Processo principal criando thread "<< i << endl;
         pthread_create(&threads[i], NULL, computar, (void*)(size_t) i);
